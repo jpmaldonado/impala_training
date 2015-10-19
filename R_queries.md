@@ -123,11 +123,11 @@ After examining the structure of each table, we can locate common columns to joi
 We can join these tables by finding variants whose chromsome matches a cytoband chromsome, and whose position falls between a cytobands start and stop positions. 
 
 <h4>SELECT</h4>
-Now we need to figure out what information we want to get back from each table. Since we are already have basic annotations in the distinct_test table, we'll want to keep everything from that table. All we need from the cytoband table are the 'name' and 'gie_stain' information. 
+Now we need to figure out what information we want to get back from each table. Since we are already have basic annotations in the distinct_test table, we'll want to keep everything from that table. All we need from the cytoband table is the 'name' column. 
 
 Here's our opening statement:
 
-    SELECT dist.*, cyto.name, cyto.gie_stain
+    SELECT dist.*, cyto.name
     
 Wait. What's this dist. and cyto. stuff? In the following step, we're going to nickname each source database so that it's easier to keep track of what columns came from which tables without having to type out the full table name every time. It's called <b>aliasing</b>.   
   
@@ -151,16 +151,65 @@ Since the chromosome field can contain letters and not just numbers, its data ty
 
 The WHERE clause is used to filter data sets, so it's perfect for subsetting data. You can also use the following operators:
 
-| Operator | Description | 
-| _________| ____________|
-|     =	   |    Equal    |
-!=	Not equal
->	Greater than
-< 	Less than
->= 	Greater than or equal
-<=	Less than or equal
-BETWEEN	Between inclusive range
-LIKE	Search for pattern
-IN	Specify multiple possible values
-EXISTS	Return values that match parameters in suqbuery
-NOT EXISTS	Return all values that don't match parameters in subquery
+     Operator       Description                                                 Example
+       =	        Equal                                                       chrom = '12'
+       !=	        Not equal                                                   chrom != '12'
+       >	        Greater than                                                qual > 30
+       < 	        Less than                                                   qual < 50
+       >= 	        Greater than or equal                                       qual >= 30
+       <=	        Less than or equal                                          qual <= 50
+       BETWEEN	    Between inclusive range                                     qual BETWEEN 30 and 50
+       LIKE	        Search for pattern                                          gene_name LIKE 'BRCA%'
+       IN	        Specify multiple possible values                            sample_id IN (1011, 2251, 3360) 
+       EXISTS	    Return values that match parameters in suqbuery             WHERE EXISTS (subquery)
+       NOT EXISTS	Return all values that don't match parameters in subquery   WHERE NOT EXISTS (subquery)
+       
+More info on operators <a href='http://www.cloudera.com/content/cloudera/en/documentation/cloudera-impala/v2-0-x/topics/impala_operators.html' target='_blank'>here.</a>
+
+<h4>Putting it all together</h4>
+Let's put the query together and run it:
+
+    sqlQuery(conn, 'SELECT dist.*, cyto.name
+    FROM users_selasady.distinct_test as dist, ref_grch37.cytoband as cyto
+    WHERE dist.chrom = cyto.chrom
+    AND dist.pos BETWEEN cyto.start and cyto.stop
+    LIMIT 5')
+    
+    chrom   pos    ref alt  kav_freq    clin_sig   clin_dbn       rs_id       dann_score     ens_gene 
+      1     29720   C   T   0.0000384       NA       NA           <NA>         0.8699275     WASH7P 
+      1     29720   C   T   0.0000384       NA       NA           <NA>         0.8699275     MIR1302-11 
+      1     17694   C   T   0.0001537       NA       NA           rs563880190  0.7461687     WASH7P 
+      1     17694   C   T   0.0001537       NA       NA           rs563880190  0.7461687     WASH7P 
+      1     17272   G   A   0.0000384       NA       NA           rs555297131  0.8428651     WASH7P 
+      
+    ens_geneid       name
+    ENSG00000227232  p36.33
+    ENSG00000243485  p36.33
+    ENSG00000227232  p36.33
+    ENSG00000227232  p36.33
+    ENSG00000227232  p36.33
+    
+This is almost great. Except that if we came back our table later, we'd have no idea what 'name' meant from the last column. Instead, we can create a more informative alias for our column name, too. 
+
+<b>Column names should always be lowercase and contain no spaces or special characters.</b>
+
+    sqlQuery(conn, 'SELECT dist.*, cyto.name as cytoband_name
+    FROM users_selasady.distinct_test as dist, ref_grch37.cytoband as cyto
+    WHERE dist.chrom = cyto.chrom
+    AND dist.pos BETWEEN cyto.start and cyto.stop
+    LIMIT 5')
+    
+    chrom   pos    ref alt  kav_freq    clin_sig   clin_dbn       rs_id       dann_score     ens_gene 
+      1     29720   C   T   0.0000384       NA       NA           <NA>         0.8699275     WASH7P 
+      1     29720   C   T   0.0000384       NA       NA           <NA>         0.8699275     MIR1302-11 
+      1     17694   C   T   0.0001537       NA       NA           rs563880190  0.7461687     WASH7P 
+      1     17694   C   T   0.0001537       NA       NA           rs563880190  0.7461687     WASH7P 
+      1     17272   G   A   0.0000384       NA       NA           rs555297131  0.8428651     WASH7P 
+      
+    ens_geneid       cytoband_name
+    ENSG00000227232  p36.33
+    ENSG00000243485  p36.33
+    ENSG00000227232  p36.33
+    ENSG00000227232  p36.33
+    ENSG00000227232  p36.33
+    
