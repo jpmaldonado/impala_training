@@ -153,7 +153,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Interacting-with-impala">5. Interacting with impala<a class="anchor-link" href="#Interacting-with-impala">&#182;</a></h3>
+<h3 id="Interacting-with-impala">5. Interacting with impala<a class="anchor-link" href="#Interacting-with-impala"></a></h3>
 </div>
 </div>
 </div>
@@ -396,7 +396,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Edit-/user/local/etc/odbcinst.ini">5. Edit /user/local/etc/odbcinst.ini<a class="anchor-link" href="#Edit-/user/local/etc/odbcinst.ini">&#182;</a></h4>
+<h4 id="Edit-/user/local/etc/odbcinst.ini">5. Edit /user/local/etc/odbcinst.ini<a class="anchor-link" href="#Edit-/user/local/etc/odbcinst.ini"></a></h4>
 </div>
 </div>
 </div>
@@ -423,7 +423,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Edited-/opt/cloudera/impalaodbc/lib/universal/cloudera.impalaodbc.ini:">6. Edit /opt/cloudera/impalaodbc/lib/universal/cloudera.impalaodbc.ini:<a class="anchor-link" href="#Edited-/opt/cloudera/impalaodbc/lib/universal/cloudera.impalaodbc.ini:">&#182;</a></h4>
+<h4 id="Edited-/opt/cloudera/impalaodbc/lib/universal/cloudera.impalaodbc.ini:">6. Edit /opt/cloudera/impalaodbc/lib/universal/cloudera.impalaodbc.ini:<a class="anchor-link" href="#Edited-/opt/cloudera/impalaodbc/lib/universal/cloudera.impalaodbc.ini:"></a></h4>
 </div>
 </div>
 </div>
@@ -457,7 +457,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Export-path-variables-to-~/.bashrc:">7. Export path variables to ~/.bashrc:<a class="anchor-link" href="#Export-path-variables-to-~/.bashrc:">&#182;</a></h4>
+<h4 id="Export-path-variables-to-~/.bashrc:">7. Export path variables to ~/.bashrc:<a class="anchor-link" href="#Export-path-variables-to-~/.bashrc:"></a></h4>
 </div>
 </div>
 </div>
