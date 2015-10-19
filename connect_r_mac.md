@@ -1,5 +1,5 @@
 
-<h2 id="Connecting-to-impala-on-a-mac">Connecting to impala on a mac<a class="anchor-link" href="#Connecting-to-impala-on-a-mac">&#182;</a></h2>
+<h2 id="Connecting-to-impala-on-a-mac">Connecting to impala with R on a mac<a class="anchor-link" href="#Connecting-to-impala-on-a-mac">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -9,8 +9,8 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is a little more complicated than connecting with Python and requires the use of ODBC drivers.</p>
-<p>**Note: The RImpala package connects to impala, but the queries don't work, so its useless.</p>
+<p>This is a little more complicated than connecting with Python and requires the use of ODBC drivers and the RODBC package. </p>
+<p>**Note: The RImpala package connects to impala more easily, but doesn't run useful queries so it won't be covered here.</p>
 <p>For Windows instructions, click here:</p>
 </div>
 </div>
@@ -20,7 +20,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Install-unixODBC-drivers">Install unixODBC drivers<a class="anchor-link" href="#Install-unixODBC-drivers">&#182;</a></h3>
+<h3 id="Install-unixODBC-drivers">1. Install UNIX ODBC drivers<a class="anchor-link" href="#Install-unixODBC-drivers">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -43,7 +43,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Install-the-Impala-ODBC-Driver">Install the Impala ODBC Driver<a class="anchor-link" href="#Install-the-Impala-ODBC-Driver">&#182;</a></h3>
+<h3 id="Install-the-Impala-ODBC-Driver">2. Install the Impala ODBC Driver<a class="anchor-link" href="#Install-the-Impala-ODBC-Driver">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -63,7 +63,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Install-mac-ODBC-manager">Install mac ODBC manager<a class="anchor-link" href="#Install-mac-ODBC-manager">&#182;</a></h3>
+<h3 id="Install-mac-ODBC-manager">3. Install mac ODBC manager<a class="anchor-link" href="#Install-mac-ODBC-manager">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -73,8 +73,22 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>If the following method doesn't work for you, please see the command line instructions at the bottom of the page: * Download file from http://www.odbcmanager.net/ * Once installed, open ODBC manager from Applications/Utilities * Click on &quot;Drivers&quot; and then &quot;Add&quot; * Browse to the impala driver, default location is: /opt/cloudera/impalaodbc/lib/universal/libclouderaimpalaodbc.dylib</p>
-<p>Next, add a System DSN * Click on &quot;Add a DSN Name&quot; * Click on &quot;Add&quot; * Add the following two key-value pairs: HOST glados19 PORT 21050 * Click on &quot;OK&quot;</p>
+<p>If the following method doesn't work for you, please see the command line instructions at the bottom of the page:</p>
+<ul>
+<li> Download file from http://www.odbcmanager.net/ </li>
+<li> Once installed, open ODBC manager from Applications/Utilities </li>
+<li> Click on Drivers and then Add </li>
+<li> Browse to the impala driver, default location is: <br> /opt/cloudera/impalaodbc/lib/universal/libclouderaimpalaodbc.dylib </li>
+</ul>
+<p>Next, add a System DSN 
+<ul>
+<li> Click on Add a DSN Name </li>
+<li> Click on Add </li>
+<li> Add the following two key-value pairs: <br>
+HOST your_host_name <br>
+PORT 21050 </li>
+<li> Click on OK </li>
+</ul>
 </div>
 </div>
 </div>
@@ -151,8 +165,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>RODBC uses a collection of sql based functions to perform queries and interact with impala. For more advanced queries, please visit:</p>
-<p>{link to page when it's on confluence}</p>
+<p>RODBC uses a collection of sql based functions to perform queries and interact with impala.</p>
 </div>
 </div>
 </div>
