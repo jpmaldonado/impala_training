@@ -223,7 +223,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To available all available talbes, use the sqlTables() function on your connection object.</p>
+<p>To available all available tables, use the sqlTables() function on your connection object.</p>
 <p>The TABLE_SCHEM column shows you which database the table is located in, and the TABLE_NAME column shows you the tables in each database.</p>
 </div>
 </div>
@@ -314,8 +314,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Download and install the Impala ODBC driver from:</p>
-<p>http://www.cloudera.com/content/cloudera/en/downloads/connectors/impala/odbc/impala-odbc-v2-5-23.html</p>
+<p><h4>1. <a href='http://www.cloudera.com/content/cloudera/en/downloads/connectors/impala/odbc/impala-odbc-v2-5-23.html' target='_blank'>Download</a> and install the impala ODBC driver.</h4></p>
 </div>
 </div>
 </div>
@@ -324,7 +323,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Install-UNIX-ODBC-drivers-and-view-installed-location:">Install UNIX ODBC drivers and view installed location:<a class="anchor-link" href="#Install-UNIX-ODBC-drivers-and-view-installed-location:">&#182;</a></h4>
+<h4 id="Install-UNIX-ODBC-drivers-and-view-installed-location:">2. Install UNIX ODBC drivers and view installed location:<a class="anchor-link" href="#Install-UNIX-ODBC-drivers-and-view-installed-location:">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -344,7 +343,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Point-the-DYLD-library-path-variable:">Point the DYLD library path variable:<a class="anchor-link" href="#Point-the-DYLD-library-path-variable:">&#182;</a></h4>
+<h4 id="Point-the-DYLD-library-path-variable:">3. Point the DYLD library path variable:<a class="anchor-link" href="#Point-the-DYLD-library-path-variable:">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -368,7 +367,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Edit-/usr/local/etc/odbc.ini:">Edit /usr/local/etc/odbc.ini:<a class="anchor-link" href="#Edit-/usr/local/etc/odbc.ini:">&#182;</a></h4>
+<h4 id="Edit-/usr/local/etc/odbc.ini:">4. Edit /usr/local/etc/odbc.ini:<a class="anchor-link" href="#Edit-/usr/local/etc/odbc.ini:">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -399,7 +398,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Edit-/user/local/etc/odbcinst.ini">Edit /user/local/etc/odbcinst.ini<a class="anchor-link" href="#Edit-/user/local/etc/odbcinst.ini">&#182;</a></h4>
+<h4 id="Edit-/user/local/etc/odbcinst.ini">5. Edit /user/local/etc/odbcinst.ini<a class="anchor-link" href="#Edit-/user/local/etc/odbcinst.ini">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -426,7 +425,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Edited-/opt/cloudera/impalaodbc/lib/universal/cloudera.impalaodbc.ini:">Edited /opt/cloudera/impalaodbc/lib/universal/cloudera.impalaodbc.ini:<a class="anchor-link" href="#Edited-/opt/cloudera/impalaodbc/lib/universal/cloudera.impalaodbc.ini:">&#182;</a></h4>
+<h4 id="Edited-/opt/cloudera/impalaodbc/lib/universal/cloudera.impalaodbc.ini:">6. Edit /opt/cloudera/impalaodbc/lib/universal/cloudera.impalaodbc.ini:<a class="anchor-link" href="#Edited-/opt/cloudera/impalaodbc/lib/universal/cloudera.impalaodbc.ini:">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -460,7 +459,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Export-path-variables-to-~/.bashrc:">Export path variables to ~/.bashrc:<a class="anchor-link" href="#Export-path-variables-to-~/.bashrc:">&#182;</a></h4>
+<h4 id="Export-path-variables-to-~/.bashrc:">7. Export path variables to ~/.bashrc:<a class="anchor-link" href="#Export-path-variables-to-~/.bashrc:">&#182;</a></h4>
 </div>
 </div>
 </div>
