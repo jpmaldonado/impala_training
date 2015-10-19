@@ -97,7 +97,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Connecting-in-R:">Connecting in R:<a class="anchor-link" href="#Connecting-in-R:">&#182;</a></h3>
+<h3 id="Connecting-in-R:">4. Connecting in R:<a class="anchor-link" href="#Connecting-in-R:">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -155,7 +155,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Interacting-with-impala">Interacting with impala<a class="anchor-link" href="#Interacting-with-impala">&#182;</a></h3>
+<h3 id="Interacting-with-impala">5. Interacting with impala<a class="anchor-link" href="#Interacting-with-impala">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -243,28 +243,6 @@ PORT 21050 </li>
 <span class="mi">5</span>     <span class="n">Impala</span>     <span class="n">default</span>             <span class="n">mastervar</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
 <span class="mi">6</span>     <span class="n">Impala</span>     <span class="n">default</span>      <span class="n">ptb_illumina_all</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
 <span class="mi">7</span>     <span class="n">Impala</span>     <span class="n">default</span> <span class="n">ptb_illumina_variants</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">8</span>     <span class="n">Impala</span>     <span class="n">default</span>           <span class="n">ptb_samples</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">9</span>     <span class="n">Impala</span>     <span class="n">default</span>               <span class="n">samples</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">10</span>    <span class="n">Impala</span>      <span class="n">p7_ptb</span>        <span class="n">comgen_variant</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">11</span>    <span class="n">Impala</span>      <span class="n">p7_ptb</span>      <span class="n">illumina_variant</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">12</span>    <span class="n">Impala</span>      <span class="n">p7_ptb</span>       <span class="n">variant_summary</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">13</span>    <span class="n">Impala</span>       <span class="n">p7dev</span>        <span class="n">refseq_map_tsv</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">14</span>    <span class="n">Impala</span>       <span class="n">p7dev</span>     <span class="n">refseq_map_tsv_gz</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">15</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>               <span class="n">clinvar</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">16</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>       <span class="n">clinvar_summary</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">17</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>              <span class="n">cytoband</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">18</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>                 <span class="n">dbsnp</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">19</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>         <span class="n">ensembl_genes</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">20</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>            <span class="n">esp_exomes</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">21</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>                <span class="n">kaviar</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">22</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>               <span class="n">mirbase</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">23</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>            <span class="n">pfam_clans</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">24</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>          <span class="n">pfam_regions</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">25</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>                <span class="n">refseq</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">26</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>            <span class="n">refseq_map</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">27</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>          <span class="n">repeatmasker</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">28</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>                  <span class="n">ucsc</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">29</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>           <span class="n">ucsc_segdup</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
 </pre></div>
 
 </div>
