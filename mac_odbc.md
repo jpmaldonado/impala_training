@@ -9,7 +9,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is a little more complicated than connecting on Windows. You will need to download the impala ODBC driver that is compatible with your version of impala (if unsure, just download the latest version) and follow the steps outlined below in order.</p>
+You will need to download the impala ODBC driver that is compatible with your version of impala (if unsure, just download the latest version) and follow the steps outlined below in order.</p>
 <p>For Windows instructions, click <a href='https://github.com/summerela/impala_training/blob/master/windows_odbc.md' target='_blank'>here.</a></p>
 </div>
 </div>
@@ -84,4 +84,6 @@
 HOST your_host_name <br>
 PORT 21050 </li>
 <li> Click on OK </li>
+
+
 
