@@ -10,6 +10,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is a little more complicated than connecting with Python and requires the use of the impala ODBC driver and the RODBC R package.</p>
 <p>**Note: The RImpala package connects more easily to impala, but does not run queries well so it will not be covered here.</p>
+<p> For mac instructions, click <a href='https://github.com/summerela/impala_training/blob/master/connect_r_mac.md' target='_blank'>here.</a>
 </div>
 </div>
 </div>
@@ -18,7 +19,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Install-the-Impala-ODBC-Driver">Install the Impala ODBC Driver<a class="anchor-link" href="#Install-the-Impala-ODBC-Driver"></a></h3>
+<h3 id="Install-the-Impala-ODBC-Driver">1. Install the Impala ODBC Driver<a class="anchor-link" href="#Install-the-Impala-ODBC-Driver"></a></h3>
 </div>
 </div>
 </div>
@@ -28,7 +29,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Downlad and install the Impala ODBC driver from:</p>
+<p>Download and install the Impala ODBC driver from:</p>
 <p>http://www.cloudera.com/content/cloudera/en/downloads/connectors/impala/odbc/impala-odbc-v2-5-23.html</p>
 </div>
 </div>
@@ -38,7 +39,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Install-Cloudera-Impala-ODBC-driver">Install Cloudera Impala ODBC driver<a class="anchor-link" href="#Install-Cloudera-Impala-ODBC-driver"></a></h3>
+<h3 id="Install-Cloudera-Impala-ODBC-driver">2. Install Cloudera Impala ODBC driver<a class="anchor-link" href="#Install-Cloudera-Impala-ODBC-driver"></a></h3>
 </div>
 </div>
 </div>
@@ -70,7 +71,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Connecting-in-R:">Connecting in R:<a class="anchor-link" href="#Connecting-in-R:"></a></h3>
+<h3 id="Connecting-in-R:">3. Connecting in R:<a class="anchor-link" href="#Connecting-in-R:"></a></h3>
 </div>
 </div>
 </div>
@@ -128,7 +129,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Interacting-with-impala">Interacting with impala<a class="anchor-link" href="#Interacting-with-impala"></a></h3>
+<h3 id="Interacting-with-impala">4. Interacting with impala<a class="anchor-link" href="#Interacting-with-impala"></a></h3>
 </div>
 </div>
 </div>
@@ -138,8 +139,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>RODBC uses a collection of sql based functions to perform queries and interact with impala. For more advanced queries, please visit:</p>
-<p>{link to page when it's on confluence}</p>
+<p>RODBC uses a collection of sql based functions to perform queries and interact with impala. 
 </div>
 </div>
 </div>
@@ -197,7 +197,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To available all available talbes, use the sqlTables() function on your connection object.</p>
+<p>To view all available tables, use the sqlTables() function on your connection object.</p>
 <p>The TABLE_SCHEM column shows you which database the table is located in, and the TABLE_NAME column shows you the tables in each database.</p>
 </div>
 </div>
@@ -214,31 +214,7 @@
 <span class="mi">2</span>     <span class="n">Impala</span>     <span class="n">default</span>         <span class="n">featurematrix</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
 <span class="mi">3</span>     <span class="n">Impala</span>     <span class="n">default</span>              <span class="n">features</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
 <span class="mi">4</span>     <span class="n">Impala</span>     <span class="n">default</span>  <span class="n">fmx_ptb_df4_clinical</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">5</span>     <span class="n">Impala</span>     <span class="n">default</span>             <span class="n">mastervar</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">6</span>     <span class="n">Impala</span>     <span class="n">default</span>      <span class="n">ptb_illumina_all</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">7</span>     <span class="n">Impala</span>     <span class="n">default</span> <span class="n">ptb_illumina_variants</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">8</span>     <span class="n">Impala</span>     <span class="n">default</span>           <span class="n">ptb_samples</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">9</span>     <span class="n">Impala</span>     <span class="n">default</span>               <span class="n">samples</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">10</span>    <span class="n">Impala</span>      <span class="n">p7_ptb</span>        <span class="n">comgen_variant</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">11</span>    <span class="n">Impala</span>      <span class="n">p7_ptb</span>      <span class="n">illumina_variant</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">12</span>    <span class="n">Impala</span>      <span class="n">p7_ptb</span>       <span class="n">variant_summary</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">13</span>    <span class="n">Impala</span>       <span class="n">p7dev</span>        <span class="n">refseq_map_tsv</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">14</span>    <span class="n">Impala</span>       <span class="n">p7dev</span>     <span class="n">refseq_map_tsv_gz</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">15</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>               <span class="n">clinvar</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">16</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>       <span class="n">clinvar_summary</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">17</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>              <span class="n">cytoband</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">18</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>                 <span class="n">dbsnp</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">19</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>         <span class="n">ensembl_genes</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">20</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>            <span class="n">esp_exomes</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">21</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>                <span class="n">kaviar</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">22</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>               <span class="n">mirbase</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">23</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>            <span class="n">pfam_clans</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">24</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>          <span class="n">pfam_regions</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">25</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>                <span class="n">refseq</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">26</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>            <span class="n">refseq_map</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">27</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>          <span class="n">repeatmasker</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">28</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>                  <span class="n">ucsc</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
-<span class="mi">29</span>    <span class="n">Impala</span> <span class="n">public_hg19</span>           <span class="n">ucsc_segdup</span>      <span class="n">TABLE</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
+
 </pre></div>
 
 </div>
@@ -291,7 +267,6 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To learn more about creating queries, please visit: https://ilyawiki.systemsbiology.net/display/ISBInova/Creating+impala+queries</p>
 </div>
 </div>
 </div>
