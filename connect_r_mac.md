@@ -1,5 +1,5 @@
 
-<h2 id="Connecting-to-impala-on-a-mac">Connecting to impala with R on a mac<a class="anchor-link" href="#Connecting-to-impala-on-a-mac">&#182;</a></h2>
+<h2 id="Connecting-to-impala-on-a-mac">Connecting to impala with R on a mac<a class="anchor-link" href="#Connecting-to-impala-on-a-mac"></a></h2>
 </div>
 </div>
 </div>
@@ -20,14 +20,12 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Install-unixODBC-drivers">1. Install UNIX ODBC drivers<a class="anchor-link" href="#Install-unixODBC-drivers">&#182;</a></h3>
+<h3 id="Install-unixODBC-drivers">1. Install UNIX ODBC drivers<a class="anchor-link" href="#Install-unixODBC-drivers"></a></h3>
 </div>
 </div>
 </div>
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight"><pre><span class="n">brew</span> <span class="n">install</span> <span class="n">unixodbc</span>
@@ -43,7 +41,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Install-the-Impala-ODBC-Driver">2. Install the Impala ODBC Driver<a class="anchor-link" href="#Install-the-Impala-ODBC-Driver">&#182;</a></h3>
+<h3 id="Install-the-Impala-ODBC-Driver">2. Install the Impala ODBC Driver<a class="anchor-link" href="#Install-the-Impala-ODBC-Driver"></a></h3>
 </div>
 </div>
 </div>
@@ -63,7 +61,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Install-mac-ODBC-manager">3. Install mac ODBC manager<a class="anchor-link" href="#Install-mac-ODBC-manager">&#182;</a></h3>
+<h3 id="Install-mac-ODBC-manager">3. Install mac ODBC manager<a class="anchor-link" href="#Install-mac-ODBC-manager"></a></h3>
 </div>
 </div>
 </div>
@@ -97,7 +95,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Connecting-in-R:">4. Connecting in R:<a class="anchor-link" href="#Connecting-in-R:">&#182;</a></h3>
+<h3 id="Connecting-in-R:">4. Connecting in R:<a class="anchor-link" href="#Connecting-in-R:"></a></h3>
 </div>
 </div>
 </div>
@@ -174,7 +172,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="View-available-databases">View available databases<a class="anchor-link" href="#View-available-databases">&#182;</a></h4>
+<h4 id="View-available-databases">View available databases<a class="anchor-link" href="#View-available-databases"></a></h4>
 </div>
 </div>
 </div>
@@ -213,7 +211,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="View-available-tables">View available tables<a class="anchor-link" href="#View-available-tables">&#182;</a></h4>
+<h4 id="View-available-tables">View available tables<a class="anchor-link" href="#View-available-tables"></a></h4>
 </div>
 </div>
 </div>
@@ -255,7 +253,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Viewing-more-information-about-a-table">Viewing more information about a table<a class="anchor-link" href="#Viewing-more-information-about-a-table">&#182;</a></h4>
+<h4 id="Viewing-more-information-about-a-table">Viewing more information about a table<a class="anchor-link" href="#Viewing-more-information-about-a-table"></a></h4>
 </div>
 </div>
 </div>
@@ -295,7 +293,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Installing-ODBC-drivers-from-the-command-line">Installing ODBC drivers from the command line<a class="anchor-link" href="#Installing-ODBC-drivers-from-the-command-line">&#182;</a></h3>
+<h3 id="Installing-ODBC-drivers-from-the-command-line">Installing ODBC drivers from the command line<a class="anchor-link" href="#Installing-ODBC-drivers-from-the-command-line"></a></h3>
 </div>
 </div>
 </div>
@@ -323,7 +321,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Install-UNIX-ODBC-drivers-and-view-installed-location:">2. Install UNIX ODBC drivers and view installed location:<a class="anchor-link" href="#Install-UNIX-ODBC-drivers-and-view-installed-location:">&#182;</a></h4>
+<h4 id="Install-UNIX-ODBC-drivers-and-view-installed-location:">2. Install UNIX ODBC drivers and view installed location:<a class="anchor-link" href="#Install-UNIX-ODBC-drivers-and-view-installed-location:"></a></h4>
 </div>
 </div>
 </div>
@@ -343,7 +341,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Point-the-DYLD-library-path-variable:">3. Point the DYLD library path variable:<a class="anchor-link" href="#Point-the-DYLD-library-path-variable:">&#182;</a></h4>
+<h4 id="Point-the-DYLD-library-path-variable:">3. Point the DYLD library path variable:<a class="anchor-link" href="#Point-the-DYLD-library-path-variable:"></a></h4>
 </div>
 </div>
 </div>
@@ -367,7 +365,7 @@ PORT 21050 </li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Edit-/usr/local/etc/odbc.ini:">4. Edit /usr/local/etc/odbc.ini:<a class="anchor-link" href="#Edit-/usr/local/etc/odbc.ini:">&#182;</a></h4>
+<h4 id="Edit-/usr/local/etc/odbc.ini:">4. Edit /usr/local/etc/odbc.ini:<a class="anchor-link" href="#Edit-/usr/local/etc/odbc.ini:"></a></h4>
 </div>
 </div>
 </div>
