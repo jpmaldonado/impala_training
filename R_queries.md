@@ -1,4 +1,4 @@
-<h2> Querying Impala with R </h2>
+<h2> Querying Impala</h2>
 
 <h3>Connecting to impala with R</h3>
 Once you've <a href='https://github.com/summerela/impala_training/blob/master/connect_r_mac.md' target='_blank'>created an ODBC DSN</a> on your machine, you can connect to R using the RODBC package:
@@ -212,4 +212,32 @@ This is almost great. Except that if we came back our table later, we'd have no 
     ENSG00000227232  p36.33
     ENSG00000227232  p36.33
     ENSG00000227232  p36.33
+
+<h4>Types of Joins</h4>
+In SQL you can use different types of joins, depending on what results you would like to return. 
+![alt text](https://github.com/summerela/impala_training/blob/master/basic_sql_joins.png "Basic SQL joins")
+
+Note: visual from https://placeisimportant.wordpress.com/2013/02/01/visual-explanation-of-how-sql-joins-work/
+    
+<h3>Finding and Filtering with SQL</h3>
+Next we'll look at methods for locating data and filtering our result set. 
+
+<h4>OR Operator</h4>
+Let's say we are only interested in variants that have a ClinVar significance rating of 4 or 5. We can use the OR statement to limit our results: 
+
+    SELECT * 
+    FROM distinct_test dist
+    WHERE (dist.clin_sig = 4 or clin_sig = 5)
+
+Having trouble running this query? Any ideas why? HINT: what data type is the clin_sig column? 
+
+<h4>IN Operator</h4>
+You can use the IN operator similar instead of an OR clause. However, it is more memory intensive and should only be used when you have a list that is too long to type out into in a series of OR statements. 
+
+    SELECT * 
+    FROM distinct_test dist
+    WHERE dist.clin_sig IN ('4','5')
+    
+
+
     
