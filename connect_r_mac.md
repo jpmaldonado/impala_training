@@ -11,7 +11,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is a little more complicated than connecting with Python and requires the use of ODBC drivers and the RODBC package. </p>
 <p>**Note: The RImpala package connects to impala more easily, but doesn't run useful queries so it won't be covered here.</p>
-<p>For Windows instructions, click here:</p>
+<p>For Windows instructions, click <a href='https://github.com/summerela/impala_training/blob/master/connect_r_windows.md' target='_blank'>here.</a></p>
 </div>
 </div>
 </div>
