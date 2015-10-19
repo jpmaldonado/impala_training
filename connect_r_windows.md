@@ -1,4 +1,4 @@
-<h2 id="Connecting-to-impala-on-windows">Connecting to impala on windows<a class="anchor-link" href="#Connecting-to-impala-on-windows">&#182;</a></h2>
+<h2 id="Connecting-to-impala-on-windows">Connecting to impala on windows<a class="anchor-link" href="#Connecting-to-impala-on-windows"></a></h2>
 </div>
 </div>
 </div>
@@ -8,8 +8,8 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is a little more complicated than connecting with Python and requires the use of ODBC drivers.</p>
-<p>**Note: The RImpala package connects to impala, but the queries don't work, so its useless.</p>
+<p>This is a little more complicated than connecting with Python and requires the use of the impala ODBC driver and the RODBC R package.</p>
+<p>**Note: The RImpala package connects more easily to impala, but does not run queries well so it will not be covered here.</p>
 </div>
 </div>
 </div>
@@ -18,7 +18,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Install-the-Impala-ODBC-Driver">Install the Impala ODBC Driver<a class="anchor-link" href="#Install-the-Impala-ODBC-Driver">&#182;</a></h3>
+<h3 id="Install-the-Impala-ODBC-Driver">Install the Impala ODBC Driver<a class="anchor-link" href="#Install-the-Impala-ODBC-Driver"></a></h3>
 </div>
 </div>
 </div>
@@ -38,7 +38,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Install-Cloudera-Impala-ODBC-driver">Install Cloudera Impala ODBC driver<a class="anchor-link" href="#Install-Cloudera-Impala-ODBC-driver">&#182;</a></h3>
+<h3 id="Install-Cloudera-Impala-ODBC-driver">Install Cloudera Impala ODBC driver<a class="anchor-link" href="#Install-Cloudera-Impala-ODBC-driver"></a></h3>
 </div>
 </div>
 </div>
@@ -70,7 +70,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Connecting-in-R:">Connecting in R:<a class="anchor-link" href="#Connecting-in-R:">&#182;</a></h3>
+<h3 id="Connecting-in-R:">Connecting in R:<a class="anchor-link" href="#Connecting-in-R:"></a></h3>
 </div>
 </div>
 </div>
@@ -128,7 +128,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Interacting-with-impala">Interacting with impala<a class="anchor-link" href="#Interacting-with-impala">&#182;</a></h3>
+<h3 id="Interacting-with-impala">Interacting with impala<a class="anchor-link" href="#Interacting-with-impala"></a></h3>
 </div>
 </div>
 </div>
@@ -148,7 +148,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="View-available-databases">View available databases<a class="anchor-link" href="#View-available-databases">&#182;</a></h4>
+<h4 id="View-available-databases">View available databases<a class="anchor-link" href="#View-available-databases"></a></h4>
 </div>
 </div>
 </div>
@@ -187,7 +187,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="View-available-tables">View available tables<a class="anchor-link" href="#View-available-tables">&#182;</a></h4>
+<h4 id="View-available-tables">View available tables<a class="anchor-link" href="#View-available-tables"></a></h4>
 </div>
 </div>
 </div>
@@ -251,7 +251,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Viewing-more-information-about-a-table">Viewing more information about a table<a class="anchor-link" href="#Viewing-more-information-about-a-table">&#182;</a></h4>
+<h4 id="Viewing-more-information-about-a-table">Viewing more information about a table<a class="anchor-link" href="#Viewing-more-information-about-a-table"></a></h4>
 </div>
 </div>
 </div>
