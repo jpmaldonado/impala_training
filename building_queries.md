@@ -309,8 +309,13 @@ You can make changes to an exisiting table using ALTER TABLE statements. For exa
 
     ALTER TABLE database.table_name CHANGE old_colname new_colname data_type
 
+You can use this statment to change both column names and the data type of a column. Below we change the column name:
 
     ALTER TABLE default.my_wacky_table_name CHANGE kav_freq kaviar_freq float
+    
+And in the following statement we change the data type and column name: 
+
+    ALTER TABLE default.my_wacky_table_name CHANGE kaviar_freq kav_test INT
 
 [Impala's website](http://www.cloudera.com/content/www/en-us/documentation/archive/impala/2-x/2-1-x/topics/impala_alter_table.html) has more information and options for ALTER table statments. 
 
