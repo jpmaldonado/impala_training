@@ -44,6 +44,8 @@ For this example we are going to use a table called distinct_test that provides 
 
 Since we don't know the structure of these tables yet, before we can pull data from them we need to figure out what fields we can use to match the tables on. 
 
+<h4>DESCRIBE</h4>
+
 We can get more information about the columns in each table by using a DESCRIBE statement:
 
     # before joining, view table structure using "DESCRIBE database.table_name"
