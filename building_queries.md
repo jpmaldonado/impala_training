@@ -78,7 +78,6 @@ The DESCRIBE statement tells you what columns are available in your table, the d
 After examining the structure of each table, we can locate common columns to join the tables on: 
 
     distinct_test    cytoband
-    ______________________
     chrom            chrom
     pos              start
                      stop
@@ -100,7 +99,7 @@ Wait. What's this dist. and cyto. stuff? In the following step, we're going to n
 <h4>FROM</h4>
 Here's where we tell impala what table(s) to get the information from. And where we give each table an alias so we can be lazy typers.
 
-    FROM users_selasady.distinct_test as dist, ref_grch37.cytoband as cyto
+    FROM users_selasady.distinct_test as dist, p7_ref_grch37.cytoband as cyto
     
 <h4>WHERE</h4>
 Now we need to give impala some parameters on how to match the data. And this is where the aliased names really come in handy. We are going to match the tables where chromosomes are equal and the variaint position falls between the cytoband start and stop sites. 
@@ -133,7 +132,7 @@ More info on operators <a href='http://www.cloudera.com/content/cloudera/en/docu
 Let's put the query together and run it:
 
     SELECT dist.*, cyto.name
-    FROM users_selasady.distinct_test as dist, ref_grch37.cytoband as cyto
+    FROM users_selasady.distinct_test as dist, p7_ref_grch37.cytoband as cyto
     WHERE dist.chrom = cyto.chrom
     AND dist.pos BETWEEN cyto.start and cyto.stop
     LIMIT 5
@@ -152,12 +151,12 @@ Let's put the query together and run it:
     ENSG00000227232  p36.33
     ENSG00000227232  p36.33
     
-This is almost great. Except that if we came back our table later, we'd have no idea what 'name' meant from the last column. Instead, we can create a more informative alias for our column name, too. 
+This is almost great. Except that if we came back to our table later, we'd have no idea what 'name' meant in the last column. Instead, we can create a more informative alias for our column name. 
 
-<b>Column names should always be lowercase and contain no spaces or special characters.</b>
+<b>Good pratice: Column names should always be lowercase and contain no spaces or special characters.</b>
 
     SELECT dist.*, cyto.name as cytoband_name
-    FROM users_selasady.distinct_test as dist, ref_grch37.cytoband as cyto
+    FROM users_selasady.distinct_test as dist, p7_ref_grch37.cytoband as cyto
     WHERE dist.chrom = cyto.chrom
     AND dist.pos BETWEEN cyto.start and cyto.stop
     LIMIT 5
@@ -175,6 +174,17 @@ This is almost great. Except that if we came back our table later, we'd have no 
     ENSG00000227232  p36.33
     ENSG00000227232  p36.33
     ENSG00000227232  p36.33
+
+This join you performed above is an inner join by default and will only return rows that have entries in both tables. You can also specify the join more explicity, which can make complex queries easier to read. Specify any filters after the JOIN conditions: 
+
+    SELECT dist.*, cyto.name as cytoband_name
+    FROM users_selasady.distinct_test as dist
+    JOIN p7_ref_grch37.cytoband as cyto
+        ON dist.chrom = cyto.chrom
+        AND dist.pos BETWEEN cyto.start and cyto.stop
+    WHERE dist.chrom = '1'
+    LIMIT 5
+
 
 <h4>Types of Joins</h4>
 In SQL you can use different types of joins, depending on what results you would like to return. 
@@ -195,12 +205,65 @@ Let's say we are only interested in variants that have a ClinVar significance ra
 Having trouble running this query? Any ideas why? HINT: what data type is the clin_sig column? 
 
 <h4>IN Operator</h4>
-You can use the IN operator similar instead of an OR clause. However, it is more memory intensive and should only be used when you have a list that is too long to type out into in a series of OR statements. 
+You can use the IN operator in the same way you used the OR clause. 
 
     SELECT * 
     FROM distinct_test dist
     WHERE dist.clin_sig IN ('4','5')
     
+<h3>Aggregate Functions</h3>
 
+<h4>GROUP BY and COUNT</h4>
+The GROUP BY statement is used to tell SQL how you want to aggregate your table. 
 
+For example, if you wanted to count how many variants are in each chromosome, you would use GROUPBY to group your table by chromosome, and then a COUNT statement to count the number of rows in each grouping. The column specified in your GROUP BY statement must also be included in your SELECT statement: 
+
+    SELECT chrom, COUNT (*) as count
+    FROM distinct_test
+    GROUP BY chrom
+
+<h4>GROUP BY multiple columns</h4>
+You can also GROUP BY multiple columns. For example, if you wanted to know how many copies of each transcript there are for each gene in the ensembl_genes table: 
+
+    SELECT gene_name, transcript_name, COUNT (*) as count
+    FROM p7_ref_grch37.ensembl_genes
+    GROUP BY gene_name, transcript_name
     
+<h4>ORDER BY</h4>
+In our results set, it would be easier to see trends if the results were listed in order. We can specify an order using ORDER BY, with a format identical to GROUP BY:
+
+    SELECT gene_name, transcript_name, COUNT (*) as count
+    FROM p7_ref_grch37.ensembl_genes
+    GROUP BY gene_name, transcript_name
+    ORDER BY gene_name, transcript_name
+
+A lot of transcripts only show up once. What if we would like to see which transcripts occur most often? We can specify whether we went to sort each column in ascending or descending order, as follows: 
+
+    SELECT gene_name, transcript_name, COUNT (*) as count
+    FROM p7_ref_grch37.ensembl_genes
+    GROUP BY gene_name, transcript_name
+    ORDER BY gene_name ASC, COUNT (*) 
+    
+<h4>DISTINCT</h4>
+Suppose what we actually want is a count of how many transcripts are in each gene? We can use a DISTINCT clause to count only unique entries from the transcript_name column: 
+
+    SELECT gene_name, COUNT(DISTINCT(transcript_name)) tx_count
+    FROM p7_ref_grch37.ensembl_genes
+    GROUP BY gene_name
+    ORDER BY COUNT(transcript_name) DESC
+
+Note that since we are creating a column alias in the query, we cannot access it in this same query and must use COUNT(transcript_name) instead of tx_count in our ORDER BY statement. 
+
+<h4>Pattern Matching with LIKE</h4>
+Perhaps we are looking for variants that fall in gene regions that encode a CYP enzyme. There are a lot, and they all start with CYP. We can use a wildcard (%) and a LIKE statment to locate variants in these regions: 
+
+    SELECT *
+    FROM users_selasady.distinct_test 
+    WHERE ens_gene LIKE 'CYP%'
+    LIMIT 5
+    
+<h3>Table Operations</h3>
+You can also use SQL to create, update and insert rows into an existing table. 
+
+<h4>CREATE TABLE</h4>
+
