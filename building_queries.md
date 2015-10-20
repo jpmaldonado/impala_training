@@ -37,7 +37,7 @@ That still returns a lot of data. We can get more specific and select only genes
     uc001aal.1     1      +   69091   70008    69090   70008         1  
     uc001aaq.2     1      +  321084   321115   321083  321083        1  
     
-<h2>When you need information from more than one table: JOINS</h2>
+<h2>JOINS: when you need information from more than one table</h2>
 Pulling together data from multiple tables, such as is done when annotating variants, requires the use of SQL JOIN statements. There are many ways this can be done, let's walk through an example to examine the logic.
 
 For this example we are going to use a table called distinct_test that provides us with basic annotations for each variant found in the Kaviar table. This table provides basic annotaitons, but does not contain information on cytobands, so we'll need to join it with the cytoband table.  
@@ -265,5 +265,62 @@ Perhaps we are looking for variants that fall in gene regions that encode a CYP 
 <h3>Table Operations</h3>
 You can also use SQL to create, update and insert rows into an existing table. 
 
-<h4>CREATE TABLE</h4>
+<h4>CREATE TABLE from query results</h4>
+You can save the results of a query as a table on impala, which is a great idea if you hvae a particular subset of data you will be working with and would like to ensure consistency of data or reduce computation time. 
 
+We can use 'CREATE TABLE database.table_name AS' to save our CYP subset as a table on impala. Make sure to provide the table with a unique name, and remember the name because I'm going to ask you to delete it when we're done. 
+
+    CREATE TABLE default.my_wacky_table_name AS 
+    SELECT *
+    FROM users_selasady.distinct_test 
+    WHERE ens_gene LIKE 'CYP%'
+    LIMIT 5
+
+<h4>Create table from TSV/CSV with HUE </h4>
+You can also create a table from a tsv or csv file by first uploading the table to HDFS. This can be done from any interface, but the simplest way is via the Hue web interface. 
+
+If you don't have a small CSV or TSV file handy,  save the above query as a CSV or TSV file and use it below. 
+
+<ol>
+<li>Login to Hue</li>
+<li>Click on File Browser</li>
+<li>Click on Upload and browse to your file</li>
+<li>Once your file has been uploaded to HDFS, click on the Data Browsers drop-down</li>
+<li>Click on Metastore Tables</li>
+<li>From the drop-down on the left, select the database to create the table in</li>
+<li>Click on "Create new table from a file" (if you don't see this option, you need permissions set</li>
+<li>Follow the wizard</li>
+<li>Check your table to make sure it's correct</li>
+</ol>
+
+If you have trouble creating a table, make sure that your file is properly formatted. 
+
+If you run into a permissions error similar to this one: 
+
+    error: 13:03:50 ERROR ql.Driver: FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. MetaException(message:Got exception: org.apache.hadoop.security.AccessControlException Permission denied: user=chumphri, access=EXECUTE, inode="/user/hive/warehouse":hive:hive:drwxrwx--T
+    
+Then you need to give the file proper permissions on HDFS. To do this, we can delve into the HDFS command line: 
+
+    ssh impala_hdfs_server
+    hdfs dfs -chmod 777 my_wacky.csv
+
+<h4>Update Tables</h4>
+You can make changes to an exisiting table using ALTER TABLE statements. For example, if you would like to rename a column in your wacky table, use the format: 
+
+    ALTER TABLE database.table_name CHANGE old_colname new_colname data_type
+
+
+    ALTER TABLE default.my_wacky_table_name CHANGE kav_freq kaviar_freq float
+
+[Impala's website](http://www.cloudera.com/content/www/en-us/documentation/archive/impala/2-x/2-1-x/topics/impala_alter_table.html) has more information and options for ALTER table statments. 
+
+<h4>INSERT records</h4>
+To add new records to an existing table, use:
+
+     INSERT INTO TABLE database.table_name VALUES (int,'string')
+
+Make sure that the data type of the values you are inserting match up properly with the data types of each column in the exisiting table. 
+
+    INSERT INTO TABLE default.my_wacky_table_name 
+    VALUES
+         ('1',155,'A','T',0.0011,'2','Fake gene entry','rs1',0.88,'BOB1','ENS000001')
