@@ -40,4 +40,4 @@ You can try out the following sample pipeline in python to locate, filter and an
 - [Sample Pipeline](https://github.com/summerela/impala_training/blob/master/variant_pipeline_python.ipynb)
 
 ## Need help of have questions? 
-This tutorial was designed specifically for the ISB/Inova partnership. If you have any questions/comments/corrections/suggestions please feel free to email me at Summer dot Elasady AT systemsbiology.org
+This tutorial was designed specifically for the ISB/Inova partnership. If you have any questions/comments/corrections/suggestions please feel free to [email me](mailto:selasady@systemsbiology.org).
