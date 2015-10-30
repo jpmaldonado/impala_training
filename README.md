@@ -36,9 +36,8 @@ Choose your preferred interface and run through the following tutorial to learn 
 ## Sample Pipeline
 You can try out the following sample pipeline in python to locate, filter and annotate a set of variants. 
 
-- Click on the launch binder icon above (unless you already have it running)
+- Click on the launch binder icon above (unless you already have it running)  
 - [Sample Pipeline](https://github.com/summerela/impala_training/blob/master/variant_pipeline_python.ipynb)
-- 
 ## Resources
 For more information, here are some helpful links: 
 
