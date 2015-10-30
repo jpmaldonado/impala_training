@@ -41,7 +41,7 @@ You can try out the following sample pipeline in python to locate, filter and an
 ## Resources
 For more information, here are some helpful links: 
 
-- [SQL](http://www.w3schools.com/sql/default.asp)  
+- [SQL](http://www.w3schools.com/sql/default.asp)
 - [Impala syntax](http://www.cloudera.com/content/www/en-us/documentation/enterprise/latest/topics/impala_langref.html)
 - [RODBC manual](https://cran.r-project.org/web/packages/RODBC/RODBC.pdf)
 - [Impala shell](http://www.cloudera.com/content/www/en-us/documentation/archive/impala/2-x/2-1-x/topics/impala_impala_shell.html)
