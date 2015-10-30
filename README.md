@@ -17,7 +17,7 @@ For working with large tables and results set, the Hue interface can produce unr
 - [Impala Shell Tutorial](https://github.com/summerela/impala_training/blob/master/impala_shell.ipynb)
 
 ## Connecting with Python
-Once you have setup an ODBC driver on your local machine, you can easily interact with impala using Python via the [ibis](http://www.ibis-project.org/) or [impyla](https://github.com/cloudera/impyla) modules. Since the Ibis module is still under devlopment, this tutorial will only cover impyla.
+Once you have setup an ODBC driver on your local machine, you can easily interact with impala using Python via the [ibis](http://www.ibis-project.org/) or [impyla](https://github.com/cloudera/impyla) modules. Since the Ibis module is still under development, this tutorial will only cover impyla.
 
 - Click on the launch binder icon above  
 - [Click on connect_python.ipynb](https://github.com/summerela/impala_training/blob/master/connect_python.ipynb)  
@@ -29,7 +29,7 @@ Once you've created an ODBC DSN on your machine, you can connect to R using the 
 - [Connect with R script](https://github.com/summerela/impala_training/blob/master/connect_R.R)  
 
 ## SQL Query Basics
-Choose your prefered interface and run through the following tutorial to learn about creating basic SQL queries. 
+Choose your preferred interface and run through the following tutorial to learn about creating basic SQL queries. 
 
 - [Building Queries](https://github.com/summerela/impala_training/blob/master/building_queries.md)  
 
@@ -39,5 +39,5 @@ You can try out the following sample pipeline in python to locate, filter and an
 - Click on the launch binder icon above (unless you already have it running)
 - [Sample Pipeline](https://github.com/summerela/impala_training/blob/master/variant_pipeline_python.ipynb)
 
-## Need help of have questions? 
+## Need help or have questions? 
 This tutorial was designed specifically for the ISB/Inova partnership. If you have any questions/comments/corrections/suggestions please feel free to [email me](mailto:selasady@systemsbiology.org).
