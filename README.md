@@ -38,6 +38,17 @@ You can try out the following sample pipeline in python to locate, filter and an
 
 - Click on the launch binder icon above (unless you already have it running)
 - [Sample Pipeline](https://github.com/summerela/impala_training/blob/master/variant_pipeline_python.ipynb)
+- 
+## Resources
+For more information, here are some helpful links: 
+
+- [SQL](http://www.w3schools.com/sql/default.asp)  
+- [Impala syntax](http://www.cloudera.com/content/www/en-us/documentation/enterprise/latest/topics/impala_langref.html)
+- [RODBC manual](https://cran.r-project.org/web/packages/RODBC/RODBC.pdf)
+- [Impala shell](http://www.cloudera.com/content/www/en-us/documentation/archive/impala/2-x/2-1-x/topics/impala_impala_shell.html)
+- [Impyla](https://github.com/cloudera/impyla)
+- [Ibis](http://www.ibis-project.org/)
+- [Optimizing impala queries](http://www.cloudera.com/content/www/en-us/documentation/archive/impala/2-x/2-1-x/topics/impala_performance.html)
 
 ## Need help or have questions? 
 This tutorial was designed specifically for the ISB/Inova partnership. If you have any questions/comments/corrections/suggestions please feel free to [email me](mailto:selasady@systemsbiology.org).
