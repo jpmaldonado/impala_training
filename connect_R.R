@@ -31,6 +31,11 @@ head(ucsc.df)
 query = "SELECT * FROM p7_ref_grch37.ucsc_knowngene WHERE chrom = '1' LIMIT 5"
 sqlQuery(conn, query)
 
+# Viewing explain plan
+# Run queries using your connection object and sqlQuery(conn, 'query')
+query = "EXPLAIN SELECT * FROM p7_ref_grch37.ucsc_knowngene WHERE chrom = '1' LIMIT 5"
+sqlQuery(conn, query)
+
 # save query results as a dataframe
 query = "SELECT * FROM p7_ref_grch37.ucsc_knowngene WHERE chrom = '1' LIMIT 5"
 results = sqlQuery(conn, query)
