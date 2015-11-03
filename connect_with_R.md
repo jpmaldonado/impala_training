@@ -19,6 +19,14 @@ To view what tables are available on impala, run the sqlTables() function on the
     IMPALA        default          clin_path    TABLE          <NA>
     IMPALA        default          feature_fm   TABLE          <NA>
     
+  <h3>View the explain plan</h3>
+  
+  To view the explain plan for any query, simply type 'EXPLAIN' before the query: 
+  
+    # view explain plan
+    query = "EXPLAIN SELECT * FROM p7_ref_grch37.ucsc_knowngene WHERE chrom = '1' LIMIT 5"
+    sqlQuery(conn, query)
+    
   <h3>Read a table into a data frame</h3>
   We can pull a specific table into a data frame using sqlFetch() and the format database_name.table_name:
   
