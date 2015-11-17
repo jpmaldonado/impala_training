@@ -24,11 +24,11 @@ print(conn)
 sqlTables(conn)
 
 #import tables as dataframes using sqlFetch(conn, 'database.table_name')
-ucsc.df <- sqlFetch(conn, "p7_ref_grch37.ucsc_knowngene")
-head(ucsc.df)
+cytoband.df <- sqlFetch(conn, "p7_ref_grch37.cytoband")
+head(cytoband.df)
 
 # Run queries using your connection object and sqlQuery(conn, 'query')
-query = "SELECT * FROM p7_ref_grch37.ucsc_knowngene WHERE chrom = '1' LIMIT 5"
+query = "SELECT * FROM p7_ref_grch37.cytoband WHERE chrom = '1' LIMIT 5"
 sqlQuery(conn, query)
 
 # Viewing explain plan
@@ -37,9 +37,12 @@ query = "EXPLAIN SELECT * FROM p7_ref_grch37.ucsc_knowngene WHERE chrom = '1' LI
 sqlQuery(conn, query)
 
 # save query results as a dataframe
-query = "SELECT * FROM p7_ref_grch37.ucsc_knowngene WHERE chrom = '1' LIMIT 5"
+query = "SELECT * FROM p7_ref_grch37.cytoband WHERE chrom = '1' LIMIT 5"
 results = sqlQuery(conn, query)
 print (results)
+
+# save dataframe to impala
+sqlSave(conn, results, tablename='training.r_test', rownames=FALSE)
 
 #don't forget to close the connection
 #or you could leave a long query running...and running...and...
