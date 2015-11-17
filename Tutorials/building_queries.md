@@ -49,20 +49,16 @@ Since we don't know the structure of these tables yet, before we can pull data f
 We can get more information about the columns in each table by using a DESCRIBE statement:
 
     # before joining, view table structure using "DESCRIBE database.table_name"
-    DESCRIBE users_selasady.distinct_test    
+    DESCRIBE training.all_variants    
     
     name           type                comment
     chrom          string              Chromosome
     pos            int                 Variant position on chromosome
     ref            string              Reference allele
     alt            string              Alternate allele
-    kav_freq       float               Kaviar allele frequency.
-    clin_sig       string              ClinVar clinical significance rating
-    clin_dbn       string              ClinVar definition
-    rs_id          string              rsID from dbSNP
-    dann_score     decimal(18,17)      DANN pathogenicity score
-    ens_gene       string              Ensembl gene name
-    ens_geneid     string              Ensembl gene ID
+    rs_id          string              dbSNP rs_id
+    clin_sig       string              ClinVar significance rating
+    etc...
     
 The DESCRIBE statement tells you what columns are available in your table, the data type of each column, and possibly a brief description about what is contained in each column as a comment. 
 
@@ -77,7 +73,7 @@ The DESCRIBE statement tells you what columns are available in your table, the d
 
 After examining the structure of each table, we can locate common columns to join the tables on: 
 
-    distinct_test    cytoband
+    all_variants    cytoband
     chrom            chrom
     pos              start
                      stop
@@ -89,17 +85,17 @@ Now we need to figure out what information we want to get back from each table. 
 
 Here's our opening statement:
 
-    SELECT dist.*, cyto.name
+    SELECT vars.*, cyto.name
     
-Wait. What's this dist. and cyto. stuff? In the following step, we're going to nickname each source database so that it's easier to keep track of what columns came from which tables without having to type out the full table name every time. It's called <b>aliasing</b>.   
+Wait. What's this ill. and cyto. stuff? In the following step, we're going to nickname each source database so that it's easier to keep track of what columns came from which tables without having to type out the full table name every time. It's called <b>aliasing</b>.   
   
-    users_selasady.distinct_test = dist
+    training.all_variants = vars
     ref_grch37.cytoband = cyto
     
 <h4>FROM</h4>
 Here's where we tell impala what table(s) to get the information from. And where we give each table an alias so we can be lazy typers.
 
-    FROM users_selasady.distinct_test as dist, p7_ref_grch37.cytoband as cyto
+    FROM training.all_variants as vars, p7_ref_grch37.cytoband as cyto
     
 <h4>WHERE</h4>
 Now we need to give impala some parameters on how to match the data. And this is where the aliased names really come in handy. We are going to match the tables where chromosomes are equal and the variaint position falls between the cytoband start and stop sites. 
@@ -108,8 +104,8 @@ The first statment starts with WHERE, and each following clause starts with AND.
 
 Since the chromosome field can contain letters and not just numbers, its data type is a string and therefore must be placed in quotes, as shown below:
 
-    WHERE dist.chrom = cyto.chrom
-    AND dist.pos BETWEEN cyto.start and cyto.stop
+    WHERE vars.chrom = cyto.chrom
+    AND vars.pos BETWEEN cyto.start and cyto.stop
 
 The WHERE clause is used to filter data sets, so it's perfect for subsetting data. You can also use the following operators:
 
@@ -131,60 +127,59 @@ More info on operators <a href='http://www.cloudera.com/content/cloudera/en/docu
 <h4>Putting it all together</h4>
 Let's put the query together and run it:
 
-    SELECT dist.*, cyto.name
-    FROM users_selasady.distinct_test as dist, p7_ref_grch37.cytoband as cyto
-    WHERE dist.chrom = cyto.chrom
-    AND dist.pos BETWEEN cyto.start and cyto.stop
+    SELECT vars.*, cyto.name
+    FROM training.all_variants as vars, p7_ref_grch37.cytoband as cyto
+    WHERE vars.chrom = cyto.chrom
+    AND vars.pos BETWEEN cyto.start and cyto.stop
     LIMIT 5
     
-    chrom   pos    ref alt  kav_freq    clin_sig   clin_dbn       rs_id       dann_score     ens_gene 
-      1     29720   C   T   0.0000384       NA       NA           <NA>         0.8699275     WASH7P 
-      1     29720   C   T   0.0000384       NA       NA           <NA>         0.8699275     MIR1302-11 
-      1     17694   C   T   0.0001537       NA       NA           rs563880190  0.7461687     WASH7P 
-      1     17694   C   T   0.0001537       NA       NA           rs563880190  0.7461687     WASH7P 
-      1     17272   G   A   0.0000384       NA       NA           rs555297131  0.8428651     WASH7P 
-      
-    ens_geneid       name
-    ENSG00000227232  p36.33
-    ENSG00000243485  p36.33
-    ENSG00000227232  p36.33
-    ENSG00000227232  p36.33
-    ENSG00000227232  p36.33
+    chrom	 pos	    ref	 alt	rs_id	      clin_sig	clin_dbn	kav_freq	         kav_source	      
+    5	     176933816	G	 A	    rs563655574	  NULL	    NULL	    3.84000013582e-05	 phase3-IBS
+    8	     8686821	C	 T 	    rs114625858	  NULL	    NULL	    0.00230520009063	ADNI|Inova_CGI_founders-Nge3
+    9	     115811699	G	 A	    NULL	      NULL	    NULL	    6.49999992675e-06	63000exomes
+    10	     10004573	C	 T	    NULL	      NULL	    NULL	    0.00011529999756	ADNI
+    10	     36606675	G	 A	    rs555752081	  NULL	    NULL	    3.84000013582e-05	phase3-MSL
+    
+    dbsnp_build	  var_type	name
+    142	          SNV	    q35.3
+    132	          SNV	    p23.1
+	NULL	      NULL	    q32
+	NULL	      NULL	    p14
+	142	          SNV	    p11.21
     
 This is almost great. Except that if we came back to our table later, we'd have no idea what 'name' meant in the last column. Instead, we can create a more informative alias for our column name. 
 
 <b>Good pratice: Column names should always be lowercase and contain no spaces or special characters.</b>
 
-    SELECT dist.*, cyto.name as cytoband_name
-    FROM users_selasady.distinct_test as dist, p7_ref_grch37.cytoband as cyto
-    WHERE dist.chrom = cyto.chrom
-    AND dist.pos BETWEEN cyto.start and cyto.stop
+    SELECT vars.*, cyto.name as cytoband_name
+    FROM training.all_variants as vars, p7_ref_grch37.cytoband as cyto
+    WHERE vars.chrom = cyto.chrom
+    AND vars.pos BETWEEN cyto.start and cyto.stop
     LIMIT 5
     
-    chrom   pos    ref alt  kav_freq    clin_sig   clin_dbn       rs_id       dann_score     ens_gene 
-      1     29720   C   T   0.0000384       NA       NA           <NA>         0.8699275     WASH7P 
-      1     29720   C   T   0.0000384       NA       NA           <NA>         0.8699275     MIR1302-11 
-      1     17694   C   T   0.0001537       NA       NA           rs563880190  0.7461687     WASH7P 
-      1     17694   C   T   0.0001537       NA       NA           rs563880190  0.7461687     WASH7P 
-      1     17272   G   A   0.0000384       NA       NA           rs555297131  0.8428651     WASH7P 
-      
-    ens_geneid       cytoband_name
-    ENSG00000227232  p36.33
-    ENSG00000243485  p36.33
-    ENSG00000227232  p36.33
-    ENSG00000227232  p36.33
-    ENSG00000227232  p36.33
+    chrom	 pos	    ref	 alt	rs_id	      clin_sig	clin_dbn	kav_freq	         kav_source	      
+    5	     176933816	G	 A	    rs563655574	  NULL	    NULL	    3.84000013582e-05	 phase3-IBS
+    8	     8686821	C	 T 	    rs114625858	  NULL	    NULL	    0.00230520009063	ADNI|Inova_CGI_founders-Nge3
+    9	     115811699	G	 A	    NULL	      NULL	    NULL	    6.49999992675e-06	63000exomes
+    10	     10004573	C	 T	    NULL	      NULL	    NULL	    0.00011529999756	ADNI
+    10	     36606675	G	 A	    rs555752081	  NULL	    NULL	    3.84000013582e-05	phase3-MSL
+    
+    dbsnp_build	  var_type	cytoband_name
+    142	          SNV	    q35.3
+    132	          SNV	    p23.1
+	NULL	      NULL	    q32
+	NULL	      NULL	    p14
+	142	          SNV	    p11.21
 
 This join you performed above is an inner join by default and will only return rows that have entries in both tables. You can also specify the join more explicity, which can make complex queries easier to read. Specify any filters after the JOIN conditions: 
 
-    SELECT dist.*, cyto.name as cytoband_name
-    FROM users_selasady.distinct_test as dist
+    SELECT vars.*, cyto.name as cytoband_name
+    FROM training.all_variants as vars
     JOIN p7_ref_grch37.cytoband as cyto
-        ON dist.chrom = cyto.chrom
-        AND dist.pos BETWEEN cyto.start and cyto.stop
-    WHERE dist.chrom = '1'
+        ON vars.chrom = cyto.chrom
+        AND vars.pos BETWEEN cyto.start and cyto.stop
+    WHERE vars.chrom = '1'
     LIMIT 5
-
 
 <h4>Types of Joins</h4>
 In SQL you can use different types of joins, depending on what results you would like to return. 
@@ -199,8 +194,9 @@ Next we'll look at methods for locating data and filtering our result set.
 Let's say we are only interested in variants that have a ClinVar significance rating of 4 or 5. We can use the OR statement to limit our results: 
 
     SELECT * 
-    FROM distinct_test dist
-    WHERE (dist.clin_sig = 4 or clin_sig = 5)
+    FROM training.global_vars as vars
+    WHERE (vars.clin_sig = 4 or vars.clin_sig = 5)
+    LIMIT 5
 
 Having trouble running this query? Any ideas why? HINT: what data type is the clin_sig column? 
 
@@ -208,8 +204,9 @@ Having trouble running this query? Any ideas why? HINT: what data type is the cl
 You can use the IN operator in the same way you used the OR clause. 
 
     SELECT * 
-    FROM distinct_test dist
-    WHERE dist.clin_sig IN ('4','5')
+    FROM training.global_vars as vars
+    WHERE (vars.clin_sig = '4' or vars.clin_sig = '5')
+    LIMIT 5
     
 <h3>Aggregate Functions</h3>
 
@@ -219,7 +216,7 @@ The GROUP BY statement is used to tell SQL how you want to aggregate your table.
 For example, if you wanted to count how many variants are in each chromosome, you would use GROUPBY to group your table by chromosome, and then a COUNT statement to count the number of rows in each grouping. The column specified in your GROUP BY statement must also be included in your SELECT statement: 
 
     SELECT chrom, COUNT (*) as count
-    FROM distinct_test
+    FROM training.global_vars 
     GROUP BY chrom
 
 <h4>GROUP BY multiple columns</h4>
@@ -242,7 +239,7 @@ A lot of transcripts only show up once. What if we would like to see which trans
     SELECT gene_name, transcript_name, COUNT (*) as count
     FROM p7_ref_grch37.ensembl_genes
     GROUP BY gene_name, transcript_name
-    ORDER BY gene_name ASC, COUNT (*) 
+    ORDER BY gene_name DESC, COUNT (*) 
     
 <h4>DISTINCT</h4>
 Suppose what we actually want is a count of how many transcripts are in each gene? We can use a DISTINCT clause to count only unique entries from the transcript_name column: 
@@ -258,8 +255,8 @@ Note that since we are creating a column alias in the query, we cannot access it
 Perhaps we are looking for variants that fall in gene regions that encode a CYP enzyme. There are a lot, and they all start with CYP. We can use a wildcard (%) and a LIKE statment to locate variants in these regions: 
 
     SELECT *
-    FROM users_selasady.distinct_test 
-    WHERE ens_gene LIKE 'CYP%'
+    FROM training.global_vars 
+    WHERE gene_name LIKE 'CYP%'
     LIMIT 5
     
 <h3>Table Operations</h3>
@@ -270,10 +267,10 @@ You can save the results of a query as a table on impala, which is a great idea 
 
 We can use 'CREATE TABLE database.table_name AS' to save our CYP subset as a table on impala. Make sure to provide the table with a unique name, and remember the name because I'm going to ask you to delete it when we're done. 
 
-    CREATE TABLE default.my_wacky_table_name AS 
+    CREATE TABLE training.my_wacky_table_name AS 
     SELECT *
-    FROM users_selasady.distinct_test 
-    WHERE ens_gene LIKE 'CYP%'
+    FROM training.global_vars 
+    WHERE gene_name LIKE 'CYP%'
     LIMIT 5
 
 <h4>Create table from TSV/CSV with HUE </h4>
@@ -311,11 +308,11 @@ You can make changes to an exisiting table using ALTER TABLE statements. For exa
 
 You can use this statment to change both column names and the data type of a column. Below we change the column name:
 
-    ALTER TABLE default.my_wacky_table_name CHANGE kav_freq kaviar_freq float
+    ALTER TABLE training.my_wacky_table_name CHANGE kav_freq kaviar_freq float
     
 And in the following statement we change the data type and column name: 
 
-    ALTER TABLE default.my_wacky_table_name CHANGE kaviar_freq kav_test INT
+    ALTER TABLE training.my_wacky_table_name CHANGE kaviar_freq kav_test INT
 
 [Impala's website](http://www.cloudera.com/content/www/en-us/documentation/archive/impala/2-x/2-1-x/topics/impala_alter_table.html) has more information and options for ALTER table statments. 
 
@@ -326,6 +323,8 @@ To add new records to an existing table, use:
 
 Make sure that the data type of the values you are inserting match up properly with the data types of each column in the exisiting table. 
 
-    INSERT INTO TABLE default.my_wacky_table_name 
+    INSERT INTO TABLE training.my_wacky_table_name 
     VALUES
-         ('1',155,'A','T',0.0011,'2','Fake gene entry','rs1',0.88,'BOB1','ENS000001')
+         (155,'A','T','rs1055', '+', 'TESTR', 'ENS111111', 'TESTR4', 'ENS1111112', '5', 'dbSNP', 
+         cast(0.000384199986001 as int), 'dbSNP', '142', 'SNV', 
+          2.770, 0.999, 'CheeseBinding_Factor_5', '1')
