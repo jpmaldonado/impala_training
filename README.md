@@ -4,7 +4,7 @@
 Training materials for interacting with impala via Hue, impala-shell, R and Python. 
 
 ## Introduction
-The [impala training](https://github.com/summerela/impala_training/blob/master/impala_training_public.pdf) PDF file was designed to walk you through all of the following tutorials. 
+The [impala training](https://github.com/summerela/impala_training/blob/master/Tutorials/impala_training_public.pdf) PDF file was designed to walk you through all of the following tutorials. 
 
 ## Hue Interface
 The simplest way to interact with impala is via the Hue web interface. This interface is great for viewing database and table structures and provides a nice graphical interface, however, query results on larger data sets are unreliable. 
