@@ -4,12 +4,12 @@
 Training materials for interacting with impala via Hue, impala-shell, R and Python. 
 
 ## Introduction
-The [impala training](https://github.com/summerela/impala_training/blob/master/Tutorials/impala_training_public.pdf) PDF file was designed to walk you through all of the following tutorials. 
+The [impala training](https://github.com/summerela/impala_training/blob/master/Tutorials/impala_training_public.pdf) PDF file is located here if you would like to follow along with the presentation. 
 
 ## Hue Interface
 The simplest way to interact with impala is via the Hue web interface. This interface is great for viewing database and table structures and provides a nice graphical interface, however, query results on larger data sets are unreliable. 
 
-- [Hue Tutorial](https://github.com/summerela/impala_training/blob/master/using_hue.pdf)  
+- [Hue Tutorial](https://github.com/summerela/impala_training/blob/master/Tutorials/using_hue.pdf)  
 
 ## Impala Shell 
 For working with large tables and results set, the Hue interface can produce unreliable results due to size limits and caching issues. In those cases, you can work with impala from the command line, via the impala-shell.
@@ -25,19 +25,14 @@ Once you have setup an ODBC driver on your local machine, you can easily interac
 ## Connect with R
 Once you've created an ODBC DSN on your machine, you can connect to R using the RODBC package. 
 
-- [Connect with R tutorial](https://github.com/summerela/impala_training/blob/master/connect_with_R.md)  
+- [Connect with R tutorial](https://github.com/summerela/impala_training/blob/master/Tutorials/connect_with_R.md)  
 - [Connect with R script](https://github.com/summerela/impala_training/blob/master/connect_R.R)  
 
 ## SQL Query Basics
 Choose your preferred interface and run through the following tutorial to learn about creating basic SQL queries. 
 
-- [Building Queries](https://github.com/summerela/impala_training/blob/master/building_queries.md)  
+- [Building Queries](https://github.com/summerela/impala_training/blob/master/Tutorials/building_queries.md)  
 
-## Sample Pipeline
-You can try out the following sample pipeline in python to locate, filter and annotate a set of variants. 
-
-- Click on the launch binder icon above (unless you already have it running)  
-- [Sample Pipeline](https://github.com/summerela/impala_training/blob/master/variant_pipeline_python.ipynb)
 ## Resources
 For more information, here are some helpful links: 
 
